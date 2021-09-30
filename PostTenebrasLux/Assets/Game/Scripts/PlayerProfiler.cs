@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -18,6 +19,7 @@ namespace Game.Scripts
             _agent = GetComponent<NavMeshAgent>();
             _animator = GetComponent<Animator>();
             _walkActive = Animator.StringToHash("WalkActive");
+            _animator.SetBool(_walkActive, true);
         }
         
         private void Update()
