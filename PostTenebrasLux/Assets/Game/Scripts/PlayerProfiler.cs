@@ -9,15 +9,21 @@ namespace Game.Scripts
         private NavMeshAgent _agent;
         private Camera _camera;
 
+        private Animator _animator;
+        private int _walkActive;
+
         private void Start()
         {
             _camera = Camera.main;
             _agent = GetComponent<NavMeshAgent>();
+            _animator = GetComponent<Animator>();
+            _walkActive = Animator.StringToHash("WalkActive");
         }
         
         private void Update()
         {
             ClickToMove();
+            AnimationState();
         }
         
         // Player movement
@@ -34,6 +40,20 @@ namespace Game.Scripts
                 {
                     _agent.SetDestination(hitInfo.point);
                 }
+            }
+        }
+
+        // Player animations
+        private void AnimationState()
+        {
+            // if player (agent) is moving set animation state to walk else revert to idle. 
+            if (_agent.velocity != Vector3.zero)
+            {
+                _animator.SetBool(_walkActive, true);
+            }
+            else if (_agent.velocity == Vector3.zero)
+            {
+                _animator.SetBool(_walkActive, false); 
             }
         }
     }
