@@ -19,7 +19,7 @@ alt="GSA Logo" width="500" height="250"/>
 ***
 
 # About
-A diorama scene from the aftermath of a medieval battle created in Unity.
+Post Tenebras Lux - (Light After Darkness) :- A diorama scene from the aftermath of a medieval battle created in Unity.
 
 ***
 ###### END OF README
