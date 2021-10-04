@@ -5,6 +5,7 @@ public class PlayerProfiler : MonoBehaviour
 {
     public LayerMask clickable;
     private NavMeshAgent _agent;
+    public GameObject targetDest;
 
     private Animator _animator;
     private Camera _camera;
@@ -29,14 +30,17 @@ public class PlayerProfiler : MonoBehaviour
     private void ClickToMove()
     {
         // if user input is left click on location the player (agent) will move to that location. 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && !PauseMenu.Paused)
         {
             // user's pointing ray
             var ray = _camera.ScreenPointToRay(Input.mousePosition);
-
             // allow user to cast a ray of where the player can move in the clickable areas (Layer Mask).
-            if (Physics.Raycast(ray, out var hit, 100, clickable)) _agent.SetDestination(hit.point);
+            if (!Physics.Raycast(ray, out var hit, 100, clickable)) return;
+            _agent.SetDestination(hit.point);
+            // update targetDest to the ray's hit point.
+            targetDest.transform.position = hit.point;
         }
+
     }
 
     // Player animations - Transitions player's animations based on movement.
