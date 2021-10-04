@@ -37,7 +37,7 @@ public class PlayerProfiler : MonoBehaviour
             // allow user to cast a ray of where the player can move in the clickable areas (Layer Mask).
             if (!Physics.Raycast(ray, out var hit, 100, clickable)) return;
             _agent.SetDestination(hit.point);
-            // update targetDest to the ray's hit point.
+            // update targetDest to the ray's hit point (Green Circle).
             targetDest.transform.position = hit.point;
         }
 
