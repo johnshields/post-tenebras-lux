@@ -17,7 +17,6 @@ public class PlayerProfiler : MonoBehaviour
         _agent = GetComponent<NavMeshAgent>();
         _animator = GetComponent<Animator>();
         _walkActive = Animator.StringToHash("WalkActive");
-        _animator.SetBool(_walkActive, true);
     }
 
     private void Update()
