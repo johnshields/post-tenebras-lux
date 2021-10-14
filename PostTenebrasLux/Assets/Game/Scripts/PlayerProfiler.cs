@@ -1,3 +1,5 @@
+using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -10,13 +12,20 @@ public class PlayerProfiler : MonoBehaviour
     private Animator _animator;
     private Camera _camera;
     private int _walkActive;
-
+    private int _standUp;
+    private int _idleActive;
     private void Start()
     {
         _camera = Camera.main;
         _agent = GetComponent<NavMeshAgent>();
         _animator = GetComponent<Animator>();
         _walkActive = Animator.StringToHash("WalkActive");
+        _idleActive = Animator.StringToHash("IdleActive");
+        _standUp = Animator.StringToHash("StandActive");
+        
+        // play stand up animation on start, then call GoToIdle to transition to idle.
+        _animator.SetBool(_standUp, true);
+        StartCoroutine(GoToIdle());
     }
 
     private void Update()
@@ -47,5 +56,13 @@ public class PlayerProfiler : MonoBehaviour
         // if player (agent) is moving set animation state to walk else revert to idle. 
         if (_agent.velocity != Vector3.zero) _animator.SetBool(_walkActive, true);
         else if (_agent.velocity == Vector3.zero) _animator.SetBool(_walkActive, false);
+    }
+
+    // IEnumerator to transition to idle after standUp Animation is complete (10ish seconds).
+    private IEnumerator GoToIdle()
+    {
+        yield return new WaitForSeconds(10.7f);
+        _animator.SetBool(_standUp, false);
+        _animator.SetBool(_idleActive, true);
     }
 }

@@ -2420,14 +2420,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 2042953257349469734}
-  distance: 50
+  distance: 5
   xSpeed: 0.1
   ySpeed: 10
   distanceMin: 5
   distanceMax: 100
   fluid: 2
   zoomSpeed: 100
-  detectColliders: 0
 --- !u!1 &1099155604
 GameObject:
   m_ObjectHideFlags: 0
@@ -4970,8 +4969,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 919132147732577113}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.3, y: 0, z: -7.16}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: -3.0265422, y: 0, z: -3.3188632}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 572617753725626090}
@@ -4980,7 +4979,7 @@ Transform:
   - {fileID: 1543117757573754646}
   m_Father: {fileID: 0}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!4 &572617753725626090
 Transform:
   m_ObjectHideFlags: 0

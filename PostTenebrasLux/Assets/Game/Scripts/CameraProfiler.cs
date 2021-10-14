@@ -7,7 +7,6 @@ using UnityEngine;
 public class CameraProfiler : MonoBehaviour
 {
     public Transform target; // player
-
     public float distance = 50.0f;
     public float xSpeed = 0.1f;
     public float ySpeed = 10.0f;
@@ -49,7 +48,7 @@ public class CameraProfiler : MonoBehaviour
         _rotationXAxis -= _velocityY;
 
         var toRotation = Quaternion.Euler(_rotationXAxis, _rotationYAxis, 0);
-        // zoom in with mouse scroll wheel.
+        // zoom in & out with mouse scroll wheel.
         distance = Mathf.Clamp(distance - Input.GetAxis("Mouse ScrollWheel") * zoomSpeed, distanceMin, distanceMax);
 
         var negDistance = new Vector3(0.0f, 0.0f, -distance);
