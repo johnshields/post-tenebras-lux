@@ -4,8 +4,8 @@ using UnityEngine.AI;
 public class PlayerProfiler : MonoBehaviour
 {
     public LayerMask clickable;
-    private NavMeshAgent _agent;
     public GameObject targetDest;
+    private NavMeshAgent _agent;
 
     private Animator _animator;
     private Camera _camera;
@@ -39,16 +39,13 @@ public class PlayerProfiler : MonoBehaviour
             // update targetDest to the ray's hit point (Green Circle).
             targetDest.transform.position = hit.point;
         }
-
     }
 
     // Player animations - Transitions player's animations based on movement.
     private void AnimationState()
     {
         // if player (agent) is moving set animation state to walk else revert to idle. 
-        if (_agent.velocity != Vector3.zero) 
-            _animator.SetBool(_walkActive, true);
-        else if (_agent.velocity == Vector3.zero) 
-            _animator.SetBool(_walkActive, false);
+        if (_agent.velocity != Vector3.zero) _animator.SetBool(_walkActive, true);
+        else if (_agent.velocity == Vector3.zero) _animator.SetBool(_walkActive, false);
     }
 }

@@ -2,14 +2,14 @@ using UnityEngine;
 
 public class PauseMenu : MonoBehaviour
 {
-    public GameObject pauseMenu;
     public static bool Paused;
-    
+    public GameObject pauseMenu;
+
     private void Start()
     {
         pauseMenu.SetActive(false);
     }
-    
+
     private void Update()
     {
         // if esc pressed pause game else resume.
@@ -17,7 +17,7 @@ public class PauseMenu : MonoBehaviour
         if (Paused) ResumeGame();
         else PauseGame();
     }
-    
+
     private void PauseGame()
     {
         // Pause - volume & time.
