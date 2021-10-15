@@ -4,6 +4,7 @@ using UnityEngine;
  * Adapted from:
  * https://forum.unity.com/threads/mouseorbitimproved-collision-with-other-objects-causes-glitching.525853/
  */
+[AddComponentMenu("Camera-Control/Mouse Drag & Orbit with Zoom.")]
 public class CameraProfiler : MonoBehaviour
 {
     public Transform target; // player
@@ -25,6 +26,9 @@ public class CameraProfiler : MonoBehaviour
         var angles = transform.eulerAngles;
         _rotationYAxis = angles.y;
         _rotationXAxis = angles.x;
+
+        // Make the rigid body not change rotation
+        if (GetComponent<Rigidbody>()) GetComponent<Rigidbody>().freezeRotation = true;
     }
 
     private void LateUpdate()
