@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 using Object = UnityEngine.Object;
 
 public class Interacts : MonoBehaviour
@@ -14,6 +15,10 @@ public class Interacts : MonoBehaviour
     public GameObject chest;
     public GameObject chestLock;
     public GameObject exitLock;
+
+    public GameObject doorKeyUI;
+    public GameObject chestKeyUI;
+    public GameObject exitKeyUI;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -34,6 +39,7 @@ public class Interacts : MonoBehaviour
         if (objectCollider == keyOne.GetComponent<Collider>())
         {
             print("[Key 1] for door found!");
+            doorKeyUI.SetActive(true);
             PlayerInventory.DoorKey += 1;
         }
 
@@ -53,6 +59,7 @@ public class Interacts : MonoBehaviour
         if (chestCollider == keyTwo.GetComponent<Collider>()) 
         {
             print("[Key 2] for [Chest] found!");
+            chestKeyUI.SetActive(true);
             PlayerInventory.ChestKey += 1;
         }
 
@@ -69,9 +76,10 @@ public class Interacts : MonoBehaviour
     
     private void UnlockExit(Object exitCollider)
     {
-        if (exitCollider == keyThree.GetComponent<Collider>()) 
+        if (exitCollider == keyThree.GetComponent<Collider>())
         {
             print("[Key 3] for [Exit] found!");
+            exitKeyUI.SetActive(true);
             PlayerInventory.ExitKey += 1;
         }
 
