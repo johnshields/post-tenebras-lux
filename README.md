@@ -19,7 +19,7 @@ alt="GSA Logo" width="500" height="250"/>
 ***
 
 # About
-Post Tenebras Lux - (Light After Darkness) :- A diorama scene from the aftermath of a medieval battle created in Unity.
+Post Tenebras Lux - (Light After Darkness) :- A Dungeon escape room in the form of a Diorama.
 
 ***
 ###### END OF README
