@@ -66,11 +66,12 @@ public class Interacts : MonoBehaviour
         if (chestCollider == chestLock.GetComponent<Collider>() && PlayerInventory.ChestKey == 1)
         {
             print("[Chest] unlocked!");
-            Destroy(chest);
+            Chest.OpenChest();
         }
         else if (chestCollider == chestLock.GetComponent<Collider>())
         {
             print("[Chest] locked!");
+            Chest.LockedChest();
         }
     }
     
