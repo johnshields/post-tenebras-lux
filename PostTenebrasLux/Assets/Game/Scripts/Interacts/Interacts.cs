@@ -105,17 +105,21 @@ public class Interacts : MonoBehaviour
             exitKeyUI.SetActive(true);
             KeyCollider.BackJump();
             PlayerInventory.ExitKey += 1;
-            
             Destroy(keyThree);
         }
 
         if (exitCollider == exitLock.GetComponent<Collider>() && PlayerInventory.ExitKey == 1)
         {
             print("[Exit] unlocked!");
+            exitLock.transform.position = Vector3.up;
+            AudioSource.PlayClipAtPoint(unlockedSound, transform.position);
+            ExitDoor.OpenExit();
         }
         else if (exitCollider == exitLock.GetComponent<Collider>())
         {
             print("[Exit] locked!");
+            AudioSource.PlayClipAtPoint(lockedSound, transform.position);
+            ExitDoor.LockedExit();
         }
     }
 }
