@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Chest : MonoBehaviour
@@ -25,4 +23,3 @@ public class Chest : MonoBehaviour
         _animator.SetBool(_chestOpen, true);
     }
 }
-

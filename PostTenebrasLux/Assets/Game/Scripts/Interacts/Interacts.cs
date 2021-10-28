@@ -1,18 +1,19 @@
 using UnityEngine;
-using UnityEngine.UI;
 using Object = UnityEngine.Object;
 
 public class Interacts : MonoBehaviour
 {
     public GameObject clueOne;
     public GameObject clueTwo;
-    
+
     public GameObject keyOne;
+    public GameObject keyOneCollider;
     public GameObject keyTwo;
+    public GameObject keyTwoCollider;
     public GameObject keyThree;
-    
+    public GameObject keyThreeCollider;
+
     public GameObject doorLock;
-    public GameObject chest;
     public GameObject chestLock;
     public GameObject exitLock;
 
@@ -36,11 +37,12 @@ public class Interacts : MonoBehaviour
 
     private void UnlockDoor(Object objectCollider)
     {
-        if (objectCollider == keyOne.GetComponent<Collider>())
+        if (objectCollider == keyOneCollider.GetComponent<Collider>())
         {
             print("[Key 1] for door found!");
             doorKeyUI.SetActive(true);
             PlayerInventory.DoorKey += 1;
+            Destroy(keyOne);
         }
 
         if (objectCollider == doorLock.GetComponent<Collider>() && PlayerInventory.DoorKey == 1)
@@ -53,20 +55,23 @@ public class Interacts : MonoBehaviour
             print("Door locked!");
         }
     }
-    
+
     private void UnlockChest(Object chestCollider)
     {
-        if (chestCollider == keyTwo.GetComponent<Collider>()) 
+        if (chestCollider == keyTwoCollider.GetComponent<Collider>())
         {
             print("[Key 2] for [Chest] found!");
             chestKeyUI.SetActive(true);
             PlayerInventory.ChestKey += 1;
+            Destroy(keyTwo);
         }
 
         if (chestCollider == chestLock.GetComponent<Collider>() && PlayerInventory.ChestKey == 1)
         {
             print("[Chest] unlocked!");
             Chest.OpenChest();
+            Key.KeyJump();
+            KeyCollider.KeyJump();
         }
         else if (chestCollider == chestLock.GetComponent<Collider>())
         {
@@ -74,14 +79,15 @@ public class Interacts : MonoBehaviour
             Chest.LockedChest();
         }
     }
-    
+
     private void UnlockExit(Object exitCollider)
     {
-        if (exitCollider == keyThree.GetComponent<Collider>())
+        if (exitCollider == keyThreeCollider.GetComponent<Collider>())
         {
             print("[Key 3] for [Exit] found!");
             exitKeyUI.SetActive(true);
             PlayerInventory.ExitKey += 1;
+            Destroy(keyThree);
         }
 
         if (exitCollider == exitLock.GetComponent<Collider>() && PlayerInventory.ExitKey == 1)

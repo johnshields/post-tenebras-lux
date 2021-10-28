@@ -10,7 +10,7 @@ public class PlayerProfiler : MonoBehaviour
     private Animator _animator;
     private Camera _camera;
     private int _walkActive;
-    
+
     private void Start()
     {
         _camera = Camera.main;
