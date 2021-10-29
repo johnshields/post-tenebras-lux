@@ -1,39 +1,32 @@
+using System.Collections;
 using UnityEngine;
-using UnityEngine.Serialization;
 using Object = UnityEngine.Object;
 
 public class Interacts : MonoBehaviour
 {
-    public GameObject clueOne;
-    public GameObject clueTwo;
-
-    public GameObject keyOne;
-    public GameObject keyOneCollider;
-    public GameObject keyTwo;
-    public GameObject keyTwoCollider;
-    public GameObject keyThree;
-    public GameObject keyThreeCollider;
-
-    public GameObject doorLock;
-    public GameObject chestLock;
-    public GameObject exitLock;
-
-    public GameObject doorKeyUI;
-    public GameObject chestKeyUI;
-    public GameObject exitKeyUI;
-
-    public AudioClip pickupSound;
-    public AudioClip lockedSound;
-    public AudioClip unlockedSound;
+    public GameObject clueOne, scrollOne, clueTwo, scrollTwo;
+    public GameObject keyOne, keyOneCollider, keyTwo, keyTwoCollider, keyThree, keyThreeCollider;
+    public GameObject doorLock, chestLock, exitLock;
+    public GameObject doorKeyUI, chestKeyUI, exitKeyUI;
+    
+    public AudioClip pickupSound, lockedSound, unlockedSound;
 
     private void OnTriggerEnter(Collider other)
     {
         // Clues
         if (other == clueOne.GetComponent<Collider>())
+        {
             print("This is [Clue 1]");
+            scrollOne.SetActive(true);
+            StartCoroutine(Waiter(scrollOne));
+        }
 
         if (other == clueTwo.GetComponent<Collider>())
+        {
             print("This is [Clue 2]");
+            scrollTwo.SetActive(true);  
+            StartCoroutine(Waiter(scrollTwo));
+        }
 
         UnlockDoor(other);
         UnlockChest(other);
@@ -121,5 +114,11 @@ public class Interacts : MonoBehaviour
             AudioSource.PlayClipAtPoint(lockedSound, transform.position);
             ExitDoor.LockedExit();
         }
+    }
+
+    private IEnumerator Waiter(GameObject scroll)
+    {
+        yield return new WaitForSeconds(3);
+        scroll.SetActive(false);
     }
 }
