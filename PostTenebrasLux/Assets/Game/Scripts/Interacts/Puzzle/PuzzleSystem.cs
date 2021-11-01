@@ -6,7 +6,7 @@ public class PuzzleSystem : MonoBehaviour
     public Transform p, t, l;
     private Animator _animator;
     private int _barrierOpen;
-    
+
     private void Start()
     {
         _animator = barrier.GetComponent<Animator>();

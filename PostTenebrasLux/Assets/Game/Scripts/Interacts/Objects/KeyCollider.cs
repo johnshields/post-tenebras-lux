@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class KeyCollider : MonoBehaviour
@@ -19,7 +17,7 @@ public class KeyCollider : MonoBehaviour
     {
         _animator.SetTrigger(_jumpKey);
     }
-    
+
     public static void BackJump()
     {
         _animator.SetTrigger(_backJump);

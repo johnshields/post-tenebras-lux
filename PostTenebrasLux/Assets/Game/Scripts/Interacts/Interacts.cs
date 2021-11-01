@@ -1,6 +1,5 @@
 using System.Collections;
 using UnityEngine;
-using Object = UnityEngine.Object;
 
 public class Interacts : MonoBehaviour
 {
@@ -8,7 +7,7 @@ public class Interacts : MonoBehaviour
     public GameObject keyOne, keyOneCollider, keyTwo, keyTwoCollider, keyThree, keyThreeCollider;
     public GameObject doorLock, chestLock, exitLock;
     public GameObject doorKeyUI, chestKeyUI, exitKeyUI;
-    
+
     public AudioClip pickupSound, lockedSound, unlockedSound;
 
     private void OnTriggerEnter(Collider other)
@@ -16,15 +15,15 @@ public class Interacts : MonoBehaviour
         // Clues
         if (other == clueOne.GetComponent<Collider>())
         {
-            print("This is [Clue 1]");
             scrollOne.SetActive(true);
+            AudioSource.PlayClipAtPoint(pickupSound, transform.position);
             StartCoroutine(Waiter(scrollOne));
         }
 
         if (other == clueTwo.GetComponent<Collider>())
         {
-            print("This is [Clue 2]");
-            scrollTwo.SetActive(true);  
+            scrollTwo.SetActive(true);
+            AudioSource.PlayClipAtPoint(pickupSound, transform.position);
             StartCoroutine(Waiter(scrollTwo));
         }
 
@@ -47,14 +46,12 @@ public class Interacts : MonoBehaviour
 
         if (objectCollider == doorLock.GetComponent<Collider>() && PlayerInventory.DoorKey == 1)
         {
-            print("Door unlocked!");
             AudioSource.PlayClipAtPoint(unlockedSound, transform.position);
             doorLock.transform.position = Vector3.up;
             Door.OpenDoor();
         }
         else if (objectCollider == doorLock.GetComponent<Collider>())
         {
-            print("Door locked!");
             AudioSource.PlayClipAtPoint(lockedSound, transform.position);
             Door.LockedDoor();
         }
@@ -64,7 +61,6 @@ public class Interacts : MonoBehaviour
     {
         if (chestCollider == keyTwoCollider.GetComponent<Collider>())
         {
-            print("[Key 2] for [Chest] found!");
             AudioSource.PlayClipAtPoint(pickupSound, transform.position);
             chestKeyUI.SetActive(true);
             PlayerInventory.ChestKey += 1;
@@ -74,7 +70,6 @@ public class Interacts : MonoBehaviour
 
         if (chestCollider == chestLock.GetComponent<Collider>() && PlayerInventory.ChestKey == 1)
         {
-            print("[Chest] unlocked!");
             AudioSource.PlayClipAtPoint(unlockedSound, transform.position);
             Chest.OpenChest();
             Key.KeyJump();
@@ -83,7 +78,6 @@ public class Interacts : MonoBehaviour
         }
         else if (chestCollider == chestLock.GetComponent<Collider>())
         {
-            print("[Chest] locked!");
             AudioSource.PlayClipAtPoint(lockedSound, transform.position);
             Chest.LockedChest();
         }
@@ -93,7 +87,6 @@ public class Interacts : MonoBehaviour
     {
         if (exitCollider == keyThreeCollider.GetComponent<Collider>())
         {
-            print("[Key 3] for [Exit] found!");
             AudioSource.PlayClipAtPoint(pickupSound, transform.position);
             exitKeyUI.SetActive(true);
             KeyCollider.BackJump();
@@ -103,14 +96,12 @@ public class Interacts : MonoBehaviour
 
         if (exitCollider == exitLock.GetComponent<Collider>() && PlayerInventory.ExitKey == 1)
         {
-            print("[Exit] unlocked!");
             exitLock.transform.position = Vector3.up;
             AudioSource.PlayClipAtPoint(unlockedSound, transform.position);
             ExitDoor.OpenExit();
         }
         else if (exitCollider == exitLock.GetComponent<Collider>())
         {
-            print("[Exit] locked!");
             AudioSource.PlayClipAtPoint(lockedSound, transform.position);
             ExitDoor.LockedExit();
         }
