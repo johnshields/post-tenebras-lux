@@ -98,6 +98,7 @@ public class Interacts : MonoBehaviour
     // Exit system to allow player to collect a key to open the exit.
     private void UnlockExit(Object exitCollider)
     {
+        // collect key
         if (exitCollider == keyThreeCollider.GetComponent<Collider>())
         {
             PlayerInventory.ExitKey += 1;
@@ -107,16 +108,17 @@ public class Interacts : MonoBehaviour
             KeyCollider.BackJump();
         }
 
+        // open exit if player has it's key - else keep exit locked.
         if (exitCollider == exitLock.GetComponent<Collider>() && PlayerInventory.ExitKey == 1)
         {
-            exitLock.transform.position = Vector3.up;
-            AudioSource.PlayClipAtPoint(unlockedSound, transform.position);
             ExitDoor.OpenExit();
+            AudioSource.PlayClipAtPoint(unlockedSound, transform.position);
+            exitLock.transform.position = Vector3.up;
         }
         else if (exitCollider == exitLock.GetComponent<Collider>())
         {
-            AudioSource.PlayClipAtPoint(lockedSound, transform.position);
             ExitDoor.LockedExit();
+            AudioSource.PlayClipAtPoint(lockedSound, transform.position);
         }
     }
 
