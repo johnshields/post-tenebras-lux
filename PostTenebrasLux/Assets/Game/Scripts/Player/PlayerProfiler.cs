@@ -1,24 +1,33 @@
 using UnityEngine;
 using UnityEngine.AI;
 
+/*
+ * PlayerProfiler.
+ * Script that works with NavMesh to all the user to control the player character with a ClickToMove system.
+ * Ref: https://youtu.be/7eAwVUsiqZU
+*/
 public class PlayerProfiler : MonoBehaviour
 {
+    // NavMesh variables.
     public LayerMask clickable;
     public GameObject targetDest;
     private NavMeshAgent _agent;
-
-    private Animator _animator;
     private Camera _camera;
+
+    // animator and bool parameter.
+    private Animator _animator;
     private int _walkActive;
 
     private void Start()
     {
+        // set variables
         _camera = Camera.main;
         _agent = GetComponent<NavMeshAgent>();
         _animator = GetComponent<Animator>();
         _walkActive = Animator.StringToHash("WalkActive");
     }
 
+    // Call functions required to move player character.
     private void Update()
     {
         ClickToMove();
@@ -45,7 +54,9 @@ public class PlayerProfiler : MonoBehaviour
     private void AnimationState()
     {
         // if player (agent) is moving set animation state to walk else revert to idle. 
-        if (_agent.velocity != Vector3.zero) _animator.SetBool(_walkActive, true);
-        else if (_agent.velocity == Vector3.zero) _animator.SetBool(_walkActive, false);
+        if (_agent.velocity != Vector3.zero) 
+            _animator.SetBool(_walkActive, true);
+        else if (_agent.velocity == Vector3.zero) 
+            _animator.SetBool(_walkActive, false);
     }
 }

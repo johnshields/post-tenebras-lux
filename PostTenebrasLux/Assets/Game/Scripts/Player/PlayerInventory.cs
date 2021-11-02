@@ -1,3 +1,7 @@
+/*
+ * PlayerInventory
+ * Inventory for key collectables.
+*/
 public static class PlayerInventory
 {
     public static int DoorKey;

@@ -1,11 +1,15 @@
 using System.Collections;
 using UnityEngine;
 
+/*
+ * OpeningAnimation
+ * Script to have player character stand up when scene starts.
+*/
 public class OpeningAnimation : MonoBehaviour
 {
     public GameObject inventoryMenu;
-    private Animator _animator;
     private GameObject _player;
+    private Animator _animator;
     private int _standUp, _idleActive;
 
     private void Start()
@@ -27,8 +31,7 @@ public class OpeningAnimation : MonoBehaviour
         yield return new WaitForSeconds(10.8f);
         _animator.SetBool(_standUp, false);
         _animator.SetBool(_idleActive, true);
-        _player.GetComponent<PlayerProfiler>().enabled = true;
-        inventoryMenu.SetActive(true);
-        print("Player controls ready");
+        _player.GetComponent<PlayerProfiler>().enabled = true; // enable player controls
+        inventoryMenu.SetActive(true); // enable Inventory Menu
     }
 }

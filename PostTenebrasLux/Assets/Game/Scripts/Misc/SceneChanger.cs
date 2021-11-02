@@ -1,17 +1,20 @@
-using System.Collections;
 using UnityEngine;
 
+/*
+ * SceneChanger
+ * Script to animate scene fading out.
+*/
 public class SceneChanger : MonoBehaviour
 {
-    // Animator and ints for animator boolean & SceneManager.
+    // Animator and ints for animator boolean.
     private static Animator _animator;
     private static int _fadeOut;
-
-    // Hash int to get animator trigger & get next scene.
+    
     private void Start()
     {
-        _fadeOut = Animator.StringToHash("FadeOut");
         _animator = GetComponent<Animator>();
+        // Hash int to get animator trigger
+        _fadeOut = Animator.StringToHash("FadeOut");
     }
 
     // Set animation trigger to fade scene out.
