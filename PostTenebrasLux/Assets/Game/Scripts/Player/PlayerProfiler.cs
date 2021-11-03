@@ -10,7 +10,7 @@ public class PlayerProfiler : MonoBehaviour
 {
     // NavMesh variables.
     public LayerMask clickable;
-    public GameObject targetDest;
+    public GameObject targetDest; // x marks the spot...
     private NavMeshAgent _agent;
     private Camera _camera;
 
@@ -45,7 +45,7 @@ public class PlayerProfiler : MonoBehaviour
             // allow user to cast a ray of where the player can move in the clickable areas (Layer Mask).
             if (!Physics.Raycast(ray, out var hit, 100, clickable)) return;
             _agent.SetDestination(hit.point);
-            // update targetDest to the ray's hit point (Green Circle).
+            // update targetDest to the ray's hit point (Red X).
             targetDest.transform.position = hit.point;
         }
     }
