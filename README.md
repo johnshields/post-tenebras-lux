@@ -1,8 +1,8 @@
 <h1 align="center">Interactive Visualisation</h1>
 
 <a href="https://www.gsa.ac.uk/research/research-units/school-of-simulation-and-visualisation/" >
-<p align="center"><img src="https://i.ytimg.com/vi/iHB78aRxMjA/maxresdefault.jpg"
-alt="GSA Logo" width="500" height="250"/>
+<p align="center"><img src="https://d4ya733yr7s0y.cloudfront.net/images/made/images/uploads/general/Uni-logo-GSA_730_290_80.jpg"
+alt="GSA Logo" width="600" height="250"/>
 </p></a>
 
 ***
@@ -12,11 +12,9 @@ alt="GSA Logo" width="500" height="250"/>
 | :------------- |:-------------|
 | **Course**              | MSc Serious Games and Virtual Reality |
 | **Module**              | Interactive Visualisation |
-| **Institute**           | [The Glasgow School of Art (SimVis)](https://www.gsa.ac.uk/research/research-units/school-of-simulation-and-visualisation/) |
-| **Student**             | [John Shields](https://github.com/johnshields) |
+| **University**           | [The Glasgow School of Art (SimVis)](https://www.gsa.ac.uk/research/research-units/school-of-simulation-and-visualisation/) |
+| **Students**             | John |
 | **Module Lecturer**      | Brian Loranger |
-
-***
 
 # About
 Post Tenebras Lux - (Light After Darkness) :- A Dungeon escape room in the form of a Diorama.
